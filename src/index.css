@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Cosmic background colors */
+    --background: 240 20% 6%;
+    --foreground: 280 90% 98%;
+
+    /* Card colors - deep space theme */
+    --card: 245 25% 10%;
+    --card-foreground: 280 90% 98%;
+
+    /* Popover colors */
+    --popover: 245 25% 10%;
+    --popover-foreground: 280 90% 98%;
+
+    /* Primary colors - mystical purple */
+    --primary: 270 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 270 90% 70%;
+
+    /* Secondary colors - cosmic blue */
+    --secondary: 220 80% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted colors */
+    --muted: 245 20% 15%;
+    --muted-foreground: 240 10% 60%;
+
+    /* Accent colors - celestial gold */
+    --accent: 45 95% 60%;
+    --accent-foreground: 240 20% 6%;
+    
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 245 20% 20%;
+    --input: 245 20% 20%;
+    --ring: 270 90% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom cosmic gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(270 90% 40%), hsl(220 80% 50%), hsl(270 90% 60%));
+    --gradient-starlight: linear-gradient(180deg, hsl(240 20% 6%), hsl(245 25% 10%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 95% 50%), hsl(35 95% 60%));
+    
+    /* Shadows and glows */
+    --shadow-glow: 0 0 30px hsla(270, 90%, 60%, 0.3);
+    --shadow-cosmic: 0 10px 40px -10px hsla(270, 90%, 40%, 0.4);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar colors */
+    --sidebar-background: 245 25% 10%;
+    --sidebar-foreground: 280 90% 98%;
+    --sidebar-primary: 270 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 245 20% 15%;
+    --sidebar-accent-foreground: 280 90% 98%;
+    --sidebar-border: 245 20% 20%;
+    --sidebar-ring: 270 90% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Starry background effect */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(2px 2px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(2px 2px at 90% 60%, white, transparent),
+      radial-gradient(1px 1px at 33% 80%, white, transparent),
+      radial-gradient(1px 1px at 15% 90%, white, transparent);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+    animation: twinkle 20s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Cosmic glow animations */
+  @keyframes glow-pulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 8px hsla(270, 90%, 60%, 0.6));
+    }
+    50% {
+      filter: drop-shadow(0 0 16px hsla(270, 90%, 60%, 0.8));
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
